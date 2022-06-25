@@ -16,7 +16,7 @@ public protocol Vehicle {
 
 extension Vehicle {
     
-    var colorTag:ColorTag {
+    public var colorTag:ColorTag {
         return ColorTag(value: color)
     }
 }
