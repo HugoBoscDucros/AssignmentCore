@@ -14,19 +14,19 @@ public class VehicleService:DataSyncObserver, FileringObserver {
     unowned var filteringService:FilteringService
     unowned var syncDataService:DataSyncService
     
-    weak var dataObserver:DataSyncObserver? {
+    public weak var dataObserver:DataSyncObserver? {
         didSet {
             dataObserver?.didUpdate(filteredVehicles)
         }
     }
     
-    weak var filterObserver:FileringObserver? {
+    public weak var filterObserver:FileringObserver? {
         didSet {
             filterObserver?.didUpdate(filteringColorTags)
         }
     }
     
-    var filteredVehicles = [Vehicle]() {
+    public var filteredVehicles = [Vehicle]() {
         didSet {
             dataObserver?.didUpdate(filteredVehicles)
         }
@@ -35,18 +35,18 @@ public class VehicleService:DataSyncObserver, FileringObserver {
     
     //MARK: - shortcuts
     
-    var vehicles:[Vehicle] {
+    public var vehicles:[Vehicle] {
         return syncDataService.vehicles
     }
     
-    var filteringColorTags:Set<ColorTag> {
+    public var filteringColorTags:Set<ColorTag> {
         return filteringService.colorTags
     }
     
     
     //MARK: - init
     
-    init(filteringService:FilteringService, syncDataService:DataSyncService) {
+    public init(filteringService:FilteringService, syncDataService:DataSyncService) {
         self.syncDataService = syncDataService
         self.filteringService = filteringService
         self.syncDataService.observer = self
